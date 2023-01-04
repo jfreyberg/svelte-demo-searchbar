@@ -33,18 +33,18 @@ services:
 
 # frontend
 
-  website:
+  webapp:
     build:
-      context: ./website
-    container_name: website
+      context: ./webapp
+    container_name: webapp
     volumes:
       - type: bind
-        source: ./website/src
-        target: /usr/src/website/src
+        source: ./webapp/src
+        target: /usr/src/webapp/src
       - type: bind
-        source: ./website/static
-        target: /usr/src/website/static
+        source: ./webapp/static
+        target: /usr/src/webapp/static
     ports:
-      - 127.0.0.1:11115:3000
+      - 127.0.0.1:3000:3000
     links:
       - api
