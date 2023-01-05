@@ -14,7 +14,7 @@
 
     async function fetchSearchResults(){
         try {
-            let { data, status } = await axios.post('http://localhost:11113/search', {
+            let { data, status } = await axios.post('http://localhost:2999/search', {
                 text: searchText
             });
 

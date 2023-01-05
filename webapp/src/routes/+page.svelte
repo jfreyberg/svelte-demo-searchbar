@@ -5,7 +5,7 @@
 </script>
 
 <div class="flex flex-col justify-center items-center h-screen w-screen gap-y-4">
-  <Logo />
+  <Logo text="DemoSearch"/>
   <SearchBar />
   <SearchResults />
 

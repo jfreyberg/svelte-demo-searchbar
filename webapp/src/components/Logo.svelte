@@ -1,9 +1,11 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
+    
+    export let text = "NoLogo";
 
     let element;
-    let interval;
 
+    let color = '#FFFFFF';
     let colors = [
         "#3B3561",
         "#F5B700",
@@ -12,41 +14,18 @@
     ];
 
     function setRandomColor(){
-        let randomColor = colors[Math.floor(Math.random() * colors.length)];
-        element.style.color = randomColor;
-    }
-
-    function startColorChange(){
-        interval = setInterval(() => {
-            setRandomColor();
-        }, 5000);
-    }
-
-    function stopColorChange(){
-        clearInterval(interval);
-        interval = null;
-    }
-
-
-    function toggleColorChange(){
-        if(interval){
-            stopColorChange();
-            return;
+        let oldColor = `${color}`;
+        while (color === oldColor) {
+            console.log('new color');
+            color = colors[Math.floor(Math.random() * colors.length)];
         }
-        startColorChange();
     }
 
     onMount(() => {
         setRandomColor();
-        //startColorChange();
-    });
-
-    
-    onDestroy(() => {
-        clearInterval(interval);
     });
 
 </script>
 
-<h1 class="text-6xl font-extrabold text-white transition-colors duration-1000 cursor-pointer" bind:this={element} on:click={()=> 
-setRandomColor()}>DemoSearch</h1>
+<h1 class="text-6xl font-extrabold select-none text-white text-[{color}] transition-colors duration-1000 cursor-pointer" bind:this={element} on:click={()=> 
+setRandomColor()}>{text}</h1>
